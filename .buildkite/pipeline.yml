@@ -1,7 +1,19 @@
 steps:
-  - command: echo "start"
-  - command: .buildkite/pipeline.sh | buildkite-agent pipeline upload
-    label: ":pipeline: Upload"
-  - wait
-  - command: echo "end"
-    label: "The end"
+  - input: "Tests To Run"
+    prompt: |
+      Which set of tests to run?
+    fields:
+      - select: "Tests To Run?"
+        key: "test_type"
+        hint: "Which set of tests to run."
+        options:
+          - label: "Minimal"
+            value: "minimal"
+          - label: "Default"
+            value: "default"
+          - label: "Nightly"
+            value: "nightly"
+    - label: ":buildkite: Upload steps"
+    command: "buildkite-agent pipeline upload .buildkite/pipeline2.yml"
+    agents:
+      queue: "private"
