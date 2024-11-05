@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# exit immediately on failure, or if an undefined variable is used
-set -eu
+# This is a simple hello world script
 
-# begin the pipeline.yml file
 echo "Script uploaded from the repo"
