@@ -1,0 +1,5 @@
+agents:
+  queue: "private"
+
+steps:
+    command: echo "This is step 2"
